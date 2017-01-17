@@ -36,7 +36,6 @@ public class SortWords {
             File[] Files=chooser.getSelectedFiles();
             System.out.println("Please wait...");
                  for( int i=0;i<Files.length;i++){
-                     //System.out.println(Files[i].toString());
                      path = path + Files[i].toString();
                   }
             System.out.println(path);
@@ -54,47 +53,34 @@ public class SortWords {
         FileReader f = new FileReader(pathFile);
         BufferedReader b = new BufferedReader(f);
         while((cadena = b.readLine())!=null) {
-            //System.out.println(cadena);
             for(int i = 0 ; i < cadena.length() ;i++){
                 ca = cadena.charAt(i);
                 if(Character.isLetter(ca)){
                     if(Character.isUpperCase(ca)){
-                        if(ca == 'z'){
-                            //System.out.println(ca);
-                        }
                         ca = Character.toLowerCase(ca);
                         wordList.add((char)ca);
-                    }if(Character.isLowerCase(ca)){
-                        if(ca == 'z'){
-                            //System.out.println(ca);
-                        }
+                    }else if(Character.isLowerCase(ca)){
                         wordList.add((char)ca);
                     }
-                    
-                    //System.out.println(cadena.charAt(i));
                 }
                     
             }
         }
         b.close();
         Collections.sort(wordList);
-        //for(int i = 0 ; i < wordList.size() ; i++){
-          //  System.out.println(wordList.get(i));
-        //}
-       wordCount(wordList);
+        wordCount(wordList);
     }
     
     public static void wordCount(ArrayList wl){
-        int cont = 0,tam = wl.size() - 1;
-        for(int i = 0 ; i < tam ; i++){
-            if(wl.get(tam) != null){
-                if(wl.get(i)!= wl.get(i+1) ){
-                    System.out.println("LETRA: "+wl.get(i)+" - CONTEO: "+cont);
-                    cont = 0;
-                }else{
-                    cont++;
-                }
+        for(int i=97;i<123;i++){
+            int contar = 0;
+            for(int j=0;j<wl.size();j++){
+                if ((char)i == (char)(wl.get(j)))
+                    contar ++ ;   
             }
+            if((char)wl.get(i) == 'w')
+                System.out.println(wl.get(i));
+            System.out.println("Letra "+(char)i+": " + contar);
         }
     }
 
