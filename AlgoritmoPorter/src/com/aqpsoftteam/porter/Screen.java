@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class Screen extends javax.swing.JFrame {
 
     /** Creates new form NewJFrame */
+    private SortWords sw;
     private PDFConverter pdf;
     private MyModel model;
     private Stemm_es es;
@@ -59,6 +60,9 @@ public class Screen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jButton_Exit = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu_File = new javax.swing.JMenu();
@@ -171,7 +175,7 @@ public class Screen extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Test", jPanel_Test);
 
-        jButton1.setText("Abrir");
+        jButton1.setText("Abrir Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -188,8 +192,8 @@ public class Screen extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel4)
                 .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,6 +206,41 @@ public class Screen extends javax.swing.JFrame {
         );
 
         jTabbedPane.addTab("Convertidor de PDF", jPanel1);
+
+        jLabel5.setText("Ordena letras alfabeticamente desde A-Z y cuenta cunatas h");
+
+        jButton2.setText("Abrir Archivo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jButton2)))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel5)
+                .addGap(48, 48, 48)
+                .addComponent(jButton2)
+                .addContainerGap(227, Short.MAX_VALUE))
+        );
+
+        jTabbedPane.addTab("Ordenamiento de Letras", jPanel2);
 
         jButton_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
         jButton_Exit.setText("Salir");
@@ -294,11 +333,19 @@ public class Screen extends javax.swing.JFrame {
         pdf.selectTextFiles();
         pdf.openFilePDF();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        sw = new SortWords();
+        sw.selectTextFiles();
+        sw.openFileTXT();
+    }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_Analize;
     private javax.swing.JButton jButton_Exit;
     private javax.swing.JButton jButton_Start;
@@ -306,6 +353,7 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_Error;
     private javax.swing.JLabel jLabel_Result;
     private javax.swing.JMenuBar jMenuBar;
@@ -314,6 +362,7 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu_File;
     private javax.swing.JMenu jMenu_Help;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel_Analizar;
     private javax.swing.JPanel jPanel_Test;
     private javax.swing.JScrollPane jScrollPane1;
@@ -328,7 +377,7 @@ public class Screen extends javax.swing.JFrame {
     }
 
     private void about() {
-        ;
+        
     }
 
     private void start() {
