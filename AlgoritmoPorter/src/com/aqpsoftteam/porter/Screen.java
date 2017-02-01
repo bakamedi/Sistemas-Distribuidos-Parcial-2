@@ -375,6 +375,35 @@ public class Screen extends javax.swing.JFrame {
         chooser.setMultiSelectionEnabled(true);
         int returnVal = chooser.showOpenDialog(null);
         
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            File[] Files=chooser.getSelectedFiles();
+            System.out.println("Please wait...");
+                 for( int i=0;i<Files.length;i++){
+                     path = path + Files[i].toString();
+                  }
+            System.out.println(path);
+            try{ 
+                int i;
+                String cadena;
+                FileReader f = new FileReader(path);
+                BufferedReader b = new BufferedReader(f);
+                while((cadena = b.readLine())!=null) {
+                    String palabras[] = cadena.split(" ");
+                    for(i = 0; i < palabras.length; i++){
+                        palabras[i] = palabras[i].replaceAll("\\{Punct}","");
+                        palabras[i] = palabras[i].replaceAll("\\{Digit}","");
+                        palabras[i] = palabras[i].toLowerCase();
+                        if(palabras[i] != ""){
+                            System.out.println(steam.stemm(palabras[i]));
+                        }
+                        
+                    }
+                }
+                b.close();
+             }catch(Exception e){e.printStackTrace();}
+            System.out.println("Sort File Complete");
+        }
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
     /**
