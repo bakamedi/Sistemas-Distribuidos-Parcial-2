@@ -22,7 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author bakke
  */
 public class PDFConverter {
-    private static String path = "\\home\\bakke\\Documents\\conversionCompleta.pdf";//se debe de cambiar para cada maquina
+    private static String path = "\\home\\stalyn\\Documents\\conversionCompleta.pdf";//se debe de cambiar para cada maquina
     private static String pdfName = "conversionCompleta"+".pdf";
     
     public void selectTextFiles(){

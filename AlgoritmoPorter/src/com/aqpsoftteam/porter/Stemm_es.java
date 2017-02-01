@@ -19,7 +19,7 @@ public class Stemm_es {
      */
     private boolean is_vowel(char c) {
         return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
-                || c == '�' || c == '�' || c == '�' || c == '�' || c == '�');
+                || c == 'á' || c == 'é' || c == 'í' || c == 'ó' || c == 'ú');
     }
 
     /**
@@ -143,7 +143,7 @@ public class Stemm_es {
         // Step 0: Attached pronoun
         String[] pronoun_suf = array("me", "se", "sela", "selo", "selas",
                 "selos", "la", "le", "lo", "las", "les", "los", "nos");
-        String[] pronoun_suf_pre1 = array("i�ndo", "�ndo", "�r", "�r", "�r");
+        String[] pronoun_suf_pre1 = array("iéndo", "ándo", "ár", "ér", "ír");
         String[] pronoun_suf_pre2 = array("ando", "iendo", "ar", "er", "ir");
         String suf = endsinArr(word, pronoun_suf);
 
@@ -228,22 +228,22 @@ public class Stemm_es {
             // Do Step 2b if step 2a was done, but failed to remove a suffix.
             if (word_after2a.equals(word_after1)) {
                 if (!(suf = endsinArr(rv_txt, array("arían", "arías",
-                        "arán", "arás", "ar�ais", "ar�a", "ar�is", "ar�amos",
-                        "aremos", "ar�", "ar�", "er�an", "er�as", "er�n",
-                        "er�s", "er�ais", "er�a", "er�is", "er�amos", "eremos",
-                        "er�", "er�", "ir�an", "ir�as", "ir�n", "ir�s",
-                        "ir�ais", "ir�a", "ir�is", "ir�amos", "iremos", "ir�",
-                        "ir�", "aba", "ada", "ida", "�a", "ara", "iera", "ad",
+                        "arán", "arás", "aríais", "aría", "aréis", "aríamos",
+                        "aremos", "ará", "aré", "erían", "erías", "erán",
+                        "erás", "eríais", "ería", "eréis", "eríamos", "eremos",
+                        "erá", "eré", "irían", "irías", "irán", "irás",
+                        "iríais", "iría", "iréis", "iríamos", "iremos", "irá",
+                        "iré", "aba", "ada", "ida", "ía", "ara", "iera", "ad",
                         "ed", "id", "ase", "iese", "aste", "iste", "an",
-                        "aban", "�an", "aran", "ieran", "asen", "iesen",
-                        "aron", "ieron", "ado", "ido", "ando", "iendo", "i�",
-                        "ar", "er", "ir", "as", "abas", "adas", "idas", "�as",
-                        "aras", "ieras", "ases", "ieses", "�s", "�is", "abais",
-                        "�ais", "arais", "ierais", "aseis", "ieseis", "asteis",
-                        "isteis", "ados", "idos", "amos", "�bamos", "�amos",
-                        "imos", "�ramos", "i�ramos", "i�semos", "�semos"))).equals("")) {
+                        "aban", "ían", "aran", "ieran", "asen", "iesen",
+                        "aron", "ieron", "ado", "ido", "ando", "iendo", "ió",
+                        "ar", "er", "ir", "as", "abas", "adas", "idas", "ías",
+                        "aras", "ieras", "ases", "ieses", "ís", "áis", "abais",
+                        "íais", "arais", "ierais", "aseis", "ieseis", "asteis",
+                        "isteis", "ados", "idos", "amos", "ábamos", "íamos",
+                        "imos", "áramos", "iéramos", "iésemos", "ásemos"))).equals("")) {
                     word = substr(word, 0, -strlen(suf));
-                } else if (!(suf = endsinArr(rv_txt, array("en", "es", "�is", "emos"))).equals("")) {
+                } else if (!(suf = endsinArr(rv_txt, array("en", "es", "éis", "emos"))).equals("")) {
                     word = substr(word, 0, -strlen(suf));
                     if (endsin(word, "gu")) {
                         word = substr(word, 0, -1);
@@ -257,9 +257,9 @@ public class Stemm_es {
         r2_txt = substr(word, r2);
         rv_txt = substr(word, rv);
 
-        if (!(suf = endsinArr(rv_txt, array("os", "a", "o", "�", "�", "�"))).equals("")) {
+        if (!(suf = endsinArr(rv_txt, array("os", "a", "o", "á", "í", "ó"))).equals("")) {
             word = substr(word, 0, -strlen(suf));
-        } else if (!(suf = endsinArr(rv_txt, array("e", "�"))).equals("")) {
+        } else if (!(suf = endsinArr(rv_txt, array("e", "é"))).equals("")) {
             word = substr(word, 0, -1);
             rv_txt = substr(word, rv);
             if (endsin(rv_txt, "u") && endsin(word, "gu")) {

@@ -24,7 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class SortWords {
     private String letra;
-    private String ruta = "\\home\\bakke\\Documents\\conteoDeLetras.txt";
+    private String ruta = "\\home\\stalyn\\Documents\\conteoDeLetras.txt";
     
     
     public void selectTextFiles(){
