@@ -41,7 +41,7 @@ public class Raiz {
 
     @Override
     public String toString() {
-        return "Raiz{" + "palabra=" + palabra + ", cant=" + cant + '}';
+        return palabra + " ==> " + cant;
     }
 
     

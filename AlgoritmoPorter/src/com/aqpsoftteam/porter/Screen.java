@@ -53,6 +53,358 @@ public class Screen extends javax.swing.JFrame {
             System.out.println(raizNodo);
         }
     }
+    
+    public boolean esStopWord(String palabra){
+        String stopwords = "a\n" +
+"acá\n" +
+"ahí\n" +
+"ajena\n" +
+"ajenas\n" +
+"ajeno\n" +
+"ajenos\n" +
+"al\n" +
+"algo\n" +
+"algún\n" +
+"alguna\n" +
+"algunas\n" +
+"alguno\n" +
+"algunos\n" +
+"allá\n" +
+"alli\n" +
+"allí\n" +
+"ambos\n" +
+"ampleamos\n" +
+"ante\n" +
+"antes\n" +
+"aquel\n" +
+"aquella\n" +
+"aquellas\n" +
+"aquello\n" +
+"aquellos\n" +
+"aqui\n" +
+"aquí\n" +
+"arriba\n" +
+"asi\n" +
+"atras\n" +
+"aun\n" +
+"aunque\n" +
+"bajo\n" +
+"bastante\n" +
+"bien\n" +
+"cabe\n" +
+"cada\n" +
+"casi\n" +
+"cierta\n" +
+"ciertas\n" +
+"cierto\n" +
+"ciertos\n" +
+"como\n" +
+"cómo\n" +
+"con\n" +
+"conmigo\n" +
+"conseguimos\n" +
+"conseguir\n" +
+"consigo\n" +
+"consigue\n" +
+"consiguen\n" +
+"consigues\n" +
+"contigo\n" +
+"contra\n" +
+"cual\n" +
+"cuales\n" +
+"cualquier\n" +
+"cualquiera\n" +
+"cualquieras\n" +
+"cuan\n" +
+"cuán\n" +
+"cuando\n" +
+"cuanta\n" +
+"cuánta\n" +
+"cuantas\n" +
+"cuántas\n" +
+"cuanto\n" +
+"cuánto\n" +
+"cuantos\n" +
+"cuántos\n" +
+"de\n" +
+"dejar\n" +
+"del\n" +
+"demás\n" +
+"demas\n" +
+"demasiada\n" +
+"demasiadas\n" +
+"demasiado\n" +
+"demasiados\n" +
+"dentro\n" +
+"desde\n" +
+"donde\n" +
+"dos\n" +
+"el\n" +
+"él\n" +
+"ella\n" +
+"ellas\n" +
+"ello\n" +
+"ellos\n" +
+"empleais\n" +
+"emplean\n" +
+"emplear\n" +
+"empleas\n" +
+"empleo\n" +
+"en\n" +
+"encima\n" +
+"entonces\n" +
+"entre\n" +
+"era\n" +
+"eramos\n" +
+"eran\n" +
+"eras\n" +
+"eres\n" +
+"es\n" +
+"esa\n" +
+"esas\n" +
+"ese\n" +
+"eso\n" +
+"esos\n" +
+"esta\n" +
+"estaba\n" +
+"estado\n" +
+"estais\n" +
+"estamos\n" +
+"estan\n" +
+"estar\n" +
+"estas\n" +
+"este\n" +
+"esto\n" +
+"estos\n" +
+"estoy\n" +
+"etc\n" +
+"fin\n" +
+"fue\n" +
+"fueron\n" +
+"fui\n" +
+"fuimos\n" +
+"gueno\n" +
+"ha\n" +
+"hace\n" +
+"haceis\n" +
+"hacemos\n" +
+"hacen\n" +
+"hacer\n" +
+"haces\n" +
+"hacia\n" +
+"hago\n" +
+"hasta\n" +
+"incluso\n" +
+"intenta\n" +
+"intentais\n" +
+"intentamos\n" +
+"intentan\n" +
+"intentar\n" +
+"intentas\n" +
+"intento\n" +
+"ir\n" +
+"jamás\n" +
+"junto\n" +
+"juntos\n" +
+"la\n" +
+"largo\n" +
+"las\n" +
+"lo\n" +
+"los\n" +
+"mas\n" +
+"más\n" +
+"me\n" +
+"menos\n" +
+"mi\n" +
+"mía\n" +
+"mia\n" +
+"mias\n" +
+"mientras\n" +
+"mio\n" +
+"mío\n" +
+"mios\n" +
+"mis\n" +
+"misma\n" +
+"mismas\n" +
+"mismo\n" +
+"mismos\n" +
+"modo\n" +
+"mucha\n" +
+"muchas\n" +
+"muchísima\n" +
+"muchísimas\n" +
+"muchísimo\n" +
+"muchísimos\n" +
+"mucho\n" +
+"muchos\n" +
+"muy\n" +
+"nada\n" +
+"ni\n" +
+"ningun\n" +
+"ninguna\n" +
+"ningunas\n" +
+"ninguno\n" +
+"ningunos\n" +
+"no\n" +
+"nos\n" +
+"nosotras\n" +
+"nosotros\n" +
+"nuestra\n" +
+"nuestras\n" +
+"nuestro\n" +
+"nuestros\n" +
+"nunca\n" +
+"os\n" +
+"otra\n" +
+"otras\n" +
+"otro\n" +
+"otros\n" +
+"para\n" +
+"parecer\n" +
+"pero\n" +
+"poca\n" +
+"pocas\n" +
+"poco\n" +
+"pocos\n" +
+"podeis\n" +
+"podemos\n" +
+"poder\n" +
+"podria\n" +
+"podriais\n" +
+"podriamos\n" +
+"podrian\n" +
+"podrias\n" +
+"por\n" +
+"por qué\n" +
+"porque\n" +
+"primero\n" +
+"primero desde\n" +
+"puede\n" +
+"pueden\n" +
+"puedo\n" +
+"pues\n" +
+"que\n" +
+"qué\n" +
+"querer\n" +
+"quien\n" +
+"quién\n" +
+"quienes\n" +
+"quienesquiera\n" +
+"quienquiera\n" +
+"quiza\n" +
+"quizas\n" +
+"sabe\n" +
+"sabeis\n" +
+"sabemos\n" +
+"saben\n" +
+"saber\n" +
+"sabes\n" +
+"se\n" +
+"segun\n" +
+"ser\n" +
+"si\n" +
+"sí\n" +
+"siempre\n" +
+"siendo\n" +
+"sin\n" +
+"sín\n" +
+"sino\n" +
+"so\n" +
+"sobre\n" +
+"sois\n" +
+"solamente\n" +
+"solo\n" +
+"somos\n" +
+"soy\n" +
+"sr\n" +
+"sra\n" +
+"sres\n" +
+"sta\n" +
+"su\n" +
+"sus\n" +
+"suya\n" +
+"suyas\n" +
+"suyo\n" +
+"suyos\n" +
+"tal\n" +
+"tales\n" +
+"también\n" +
+"tambien\n" +
+"tampoco\n" +
+"tan\n" +
+"tanta\n" +
+"tantas\n" +
+"tanto\n" +
+"tantos\n" +
+"te\n" +
+"teneis\n" +
+"tenemos\n" +
+"tener\n" +
+"tengo\n" +
+"ti\n" +
+"tiempo\n" +
+"tiene\n" +
+"tienen\n" +
+"toda\n" +
+"todas\n" +
+"todo\n" +
+"todos\n" +
+"tomar\n" +
+"trabaja\n" +
+"trabajais\n" +
+"trabajamos\n" +
+"trabajan\n" +
+"trabajar\n" +
+"trabajas\n" +
+"trabajo\n" +
+"tras\n" +
+"tú\n" +
+"tu\n" +
+"tus\n" +
+"tuya\n" +
+"tuyo\n" +
+"tuyos\n" +
+"ultimo\n" +
+"un\n" +
+"una\n" +
+"unas\n" +
+"uno\n" +
+"unos\n" +
+"usa\n" +
+"usais\n" +
+"usamos\n" +
+"usan\n" +
+"usar\n" +
+"usas\n" +
+"uso\n" +
+"usted\n" +
+"ustedes\n" +
+"va\n" +
+"vais\n" +
+"valor\n" +
+"vamos\n" +
+"van\n" +
+"varias\n" +
+"varios\n" +
+"vaya\n" +
+"verdad\n" +
+"verdadera\n" +
+"vosotras\n" +
+"vosotros\n" +
+"voy\n" +
+"vuestra\n" +
+"vuestras\n" +
+"vuestro\n" +
+"vuestros\n" +
+"y\n" +
+"ya\n" +
+"yo";
+        if(stopwords.indexOf(palabra) == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public Screen() {
         setTitle("Algoritmo de Porter");
@@ -76,13 +428,11 @@ public class Screen extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanel_Analizar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField_Word = new javax.swing.JTextField();
-        jButton_Analize = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel_Result = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel_Test = new javax.swing.JPanel();
         jButton_Start = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -108,23 +458,6 @@ public class Screen extends javax.swing.JFrame {
 
         jPanel_Analizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Palabra:");
-
-        jTextField_Word.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextField_Word.setForeground(new java.awt.Color(255, 0, 0));
-
-        jButton_Analize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/play.png"))); // NOI18N
-        jButton_Analize.setText("Analizar");
-        jButton_Analize.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_AnalizeActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Resultado:");
-
         jLabel_Result.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel_Result.setForeground(new java.awt.Color(51, 51, 255));
 
@@ -137,42 +470,42 @@ public class Screen extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel_AnalizarLayout = new javax.swing.GroupLayout(jPanel_Analizar);
         jPanel_Analizar.setLayout(jPanel_AnalizarLayout);
         jPanel_AnalizarLayout.setHorizontalGroup(
             jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(40, 40, 40)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton_Analize)
-                    .addComponent(jTextField_Word, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(185, Short.MAX_VALUE))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_AnalizarLayout.setVerticalGroup(
             jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_Word, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Analize)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jLabel6))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Analizador", jPanel_Analizar);
@@ -371,11 +704,6 @@ public class Screen extends javax.swing.JFrame {
         exit();
     }//GEN-LAST:event_jButton_ExitActionPerformed
 
-    private void jButton_AnalizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AnalizeActionPerformed
-        // TODO add your handling code here:
-        analyze();
-    }//GEN-LAST:event_jButton_AnalizeActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         pdf = new PDFConverter();
@@ -419,7 +747,8 @@ public class Screen extends javax.swing.JFrame {
                         palabras[i] = palabras[i].replaceAll("\\p{Punct}","");
                         palabras[i] = palabras[i].replaceAll("\\p{Digit}","");
                         palabras[i] = palabras[i].toLowerCase();
-                        if(palabras[i] != ""){
+                        if(palabras[i] != "" && !esStopWord(palabras[i])){
+                            palabras[i] = steam.stemm(palabras[i]);
                             raizNodo = existeRaiz(palabras[i]);
                             if(raizNodo == null){
                                 raices.add(new Raiz(palabras[i]));
@@ -454,12 +783,9 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton_Analize;
     private javax.swing.JButton jButton_Exit;
     private javax.swing.JButton jButton_Start;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -475,10 +801,11 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Analizar;
     private javax.swing.JPanel jPanel_Test;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTable jTable;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField_Word;
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
@@ -509,11 +836,7 @@ public class Screen extends javax.swing.JFrame {
         jLabel_Error.setText(String.valueOf(error));
     }
 
-    private void analyze() {
-        String word =jTextField_Word.getText().trim();
-        String raiz= es.stemm(word);
-        jLabel_Result.setText(raiz);
-    }
+    
 
     public class MyModel extends DefaultTableModel {
 
