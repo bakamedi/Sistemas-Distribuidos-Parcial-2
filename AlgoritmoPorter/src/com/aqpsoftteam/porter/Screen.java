@@ -46,11 +46,35 @@ public class Screen extends javax.swing.JFrame {
         return null;
     }
     
-    public void imprimirArray(){
+    public void imprimirMasComunes(){
         int i; Raiz raizNodo;
-        for(i = 0; i < raices.size(); i++){
+        Collections.sort(raices, new Comparator<Raiz>(){
+
+                    @Override
+                    public int compare(Raiz o1, Raiz o2) {
+                        return Integer.compare(o2.getCant(), o1.getCant());
+                    }
+
+                });
+        for(i = 0; i < raices.size() && i <= 50; i++){
             raizNodo = raices.get(i);
-            AreaStemming.append(raizNodo.toString() + "\n");
+            areaMasComunes.append(raizNodo.toString() + "\n");
+        }
+    }
+    
+    public void imprimirMenosComunes(){
+        int i; Raiz raizNodo;
+        Collections.sort(raices, new Comparator<Raiz>(){
+
+                    @Override
+                    public int compare(Raiz o1, Raiz o2) {
+                        return Integer.compare(o1.getCant(), o2.getCant());
+                    }
+
+                });
+        for(i = 0; i < raices.size() && i <= 50; i++){
+            raizNodo = raices.get(i);
+            areaMenosComunes.append(raizNodo.toString() + "\n");
         }
     }
     
@@ -194,6 +218,7 @@ public class Screen extends javax.swing.JFrame {
 "hacia\n" +
 "hago\n" +
 "hasta\n" +
+"hay\n" +
 "incluso\n" +
 "intenta\n" +
 "intentais\n" +
@@ -315,6 +340,7 @@ public class Screen extends javax.swing.JFrame {
 "solamente\n" +
 "solo\n" +
 "somos\n" +
+"son\n" +
 "soy\n" +
 "sr\n" +
 "sra\n" +
@@ -428,12 +454,15 @@ public class Screen extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTabbedPane = new javax.swing.JTabbedPane();
         jPanel_Analizar = new javax.swing.JPanel();
-        jLabel_Result = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        AreaStemming = new javax.swing.JTextArea();
+        areaMasComunes = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        areaMenosComunes = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -455,11 +484,10 @@ public class Screen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel_Analizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel_Result.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel_Result.setForeground(new java.awt.Color(51, 51, 255));
+        jPanel_Analizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("Buscar Archivo");
+        jPanel_Analizar.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 19, -1, -1));
 
         jButton3.setText("Abrir Archivo");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -467,10 +495,13 @@ public class Screen extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel_Analizar.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 13, 124, -1));
 
-        AreaStemming.setColumns(20);
-        AreaStemming.setRows(5);
-        jScrollPane2.setViewportView(AreaStemming);
+        areaMasComunes.setColumns(20);
+        areaMasComunes.setRows(5);
+        jScrollPane2.setViewportView(areaMasComunes);
+
+        jPanel_Analizar.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 270));
 
         jButton4.setText("Limpiar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -478,44 +509,19 @@ public class Screen extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        jPanel_Analizar.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
 
-        javax.swing.GroupLayout jPanel_AnalizarLayout = new javax.swing.GroupLayout(jPanel_Analizar);
-        jPanel_Analizar.setLayout(jPanel_AnalizarLayout);
-        jPanel_AnalizarLayout.setHorizontalGroup(
-            jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(40, 40, 40)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                        .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel_AnalizarLayout.setVerticalGroup(
-            jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel6))
-                .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        areaMenosComunes.setColumns(20);
+        areaMenosComunes.setRows(5);
+        jScrollPane3.setViewportView(areaMenosComunes);
+
+        jPanel_Analizar.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 240, 270));
+
+        jLabel1.setText("Más Comunes");
+        jPanel_Analizar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jLabel2.setText("Menos Comunes");
+        jPanel_Analizar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
         jTabbedPane.addTab("Analizador", jPanel_Analizar);
 
@@ -537,7 +543,7 @@ public class Screen extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(40, 40, 40)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,7 +552,7 @@ public class Screen extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jLabel4))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Convertidor de PDF", jPanel1);
@@ -576,33 +582,32 @@ public class Screen extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jButton2)))
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(35, 35, 35)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 26, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane.addTab("Ordenamiento de Letras", jPanel2);
@@ -648,20 +653,23 @@ public class Screen extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton_Exit)
-                    .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton_Exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jTabbedPane)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_Exit)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -696,8 +704,14 @@ public class Screen extends javax.swing.JFrame {
         pdf.openFilePDF();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        AreaOrganizacion.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        AreaStemming.setText("");        // TODO add your handling code here:
+        areaMasComunes.setText("");
+        areaMenosComunes.setText("");
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -709,7 +723,7 @@ public class Screen extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         chooser.setMultiSelectionEnabled(true);
         int returnVal = chooser.showOpenDialog(null);
-        AreaStemming.setText("Por favor espere...\n");
+        areaMasComunes.setText("Por favor espere...\n");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             File[] Files=chooser.getSelectedFiles();
             for( int i=0;i<Files.length;i++){
@@ -740,16 +754,10 @@ public class Screen extends javax.swing.JFrame {
 
                     }
                 }
-                Collections.sort(raices, new Comparator<Raiz>(){
-
-                    @Override
-                    public int compare(Raiz o1, Raiz o2) {
-                        return Integer.compare(o2.getCant(), o1.getCant());
-                    }
-
-                });
-
-                imprimirArray();
+                
+                imprimirMasComunes();
+                imprimirMenosComunes();
+                
                 b.close();
             }catch(Exception e){e.printStackTrace();}
             System.out.println("Sort File Complete");
@@ -757,26 +765,24 @@ public class Screen extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        AreaOrganizacion.setText("");        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaOrganizacion;
-    private javax.swing.JTextArea AreaStemming;
+    private javax.swing.JTextArea areaMasComunes;
+    private javax.swing.JTextArea areaMenosComunes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton_Exit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel_Result;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItem_About;
     private javax.swing.JMenuItem jMenuItem_Exit;
@@ -787,6 +793,7 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Analizar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
