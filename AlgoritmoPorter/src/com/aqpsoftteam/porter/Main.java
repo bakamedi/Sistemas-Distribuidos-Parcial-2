@@ -10,7 +10,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
- * @author Roque E. Lopez
+ * @author
  */
 public class Main {
 

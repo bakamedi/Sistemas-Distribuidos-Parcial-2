@@ -5,10 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- *
- * @author Roque E. Lopez
- */
+
 public class Stemm_es {
 
     public Stemm_es() {
