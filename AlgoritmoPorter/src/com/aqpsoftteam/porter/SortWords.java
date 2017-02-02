@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JFileChooser;
+import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -27,7 +28,7 @@ public class SortWords {
     private String ruta = "\\home\\stalyn\\Documents\\conteoDeLetras.txt";
     
     
-    public void selectTextFiles(){
+    public void selectTextFiles(JTextArea area){
         String path = "";
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT","txt");
@@ -42,13 +43,13 @@ public class SortWords {
                   }
             System.out.println(path);
             try{ 
-                openFileTxt(path);
+                openFileTxt(path, area);
              }catch(Exception e){e.printStackTrace();}
             System.out.println("Sort File Complete");
         }
     }
     
-    public void openFileTxt(String pathFile) throws FileNotFoundException, IOException {
+    public void openFileTxt(String pathFile, JTextArea area) throws FileNotFoundException, IOException {
         ArrayList wordList = new ArrayList();
         String cadena;
         char ca ='\0';
@@ -70,10 +71,10 @@ public class SortWords {
         }
         b.close();
         Collections.sort(wordList);
-        wordCount(wordList);
+        wordCount(wordList, area);
     }
     
-    public void wordCount(ArrayList wl) throws IOException{
+    public void wordCount(ArrayList wl, JTextArea area) throws IOException{
         for(int i=97;i<123;i++){
             int contar = 0;
             for(int j=0;j<wl.size();j++){
@@ -81,9 +82,9 @@ public class SortWords {
                     contar ++ ;   
             }
             if((char)wl.get(i) == 'w')
-                System.out.println(wl.get(i));
+                area.append(wl.get(i) + "\n");
             letra = "Letra "+(char)i+": " + contar;
-            System.out.println(letra);
+            area.append(letra + "\n");
             newFileTXT(letra);
         }
     }

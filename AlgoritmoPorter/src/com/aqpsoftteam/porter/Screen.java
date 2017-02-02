@@ -50,7 +50,7 @@ public class Screen extends javax.swing.JFrame {
         int i; Raiz raizNodo;
         for(i = 0; i < raices.size(); i++){
             raizNodo = raices.get(i);
-            System.out.println(raizNodo);
+            AreaStemming.append(raizNodo.toString() + "\n");
         }
     }
     
@@ -432,19 +432,17 @@ public class Screen extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel_Test = new javax.swing.JPanel();
-        jButton_Start = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel_Error = new javax.swing.JLabel();
+        AreaStemming = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AreaOrganizacion = new javax.swing.JTextArea();
+        jButton5 = new javax.swing.JButton();
         jButton_Exit = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu_File = new javax.swing.JMenu();
@@ -470,9 +468,16 @@ public class Screen extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        AreaStemming.setColumns(20);
+        AreaStemming.setRows(5);
+        jScrollPane2.setViewportView(AreaStemming);
+
+        jButton4.setText("Limpiar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_AnalizarLayout = new javax.swing.GroupLayout(jPanel_Analizar);
         jPanel_Analizar.setLayout(jPanel_AnalizarLayout);
@@ -482,13 +487,15 @@ public class Screen extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(40, 40, 40)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
+                        .addGroup(jPanel_AnalizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton4)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_AnalizarLayout.setVerticalGroup(
@@ -505,57 +512,12 @@ public class Screen extends javax.swing.JFrame {
                     .addGroup(jPanel_AnalizarLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Analizador", jPanel_Analizar);
-
-        jPanel_Test.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton_Start.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/test.png"))); // NOI18N
-        jButton_Start.setText("Iniciar");
-        jButton_Start.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_StartActionPerformed(evt);
-            }
-        });
-
-        jTable.setModel(model);
-        jScrollPane1.setViewportView(jTable);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Nro Errores:");
-
-        javax.swing.GroupLayout jPanel_TestLayout = new javax.swing.GroupLayout(jPanel_Test);
-        jPanel_Test.setLayout(jPanel_TestLayout);
-        jPanel_TestLayout.setHorizontalGroup(
-            jPanel_TestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TestLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel_TestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_TestLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Error, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_Start)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        jPanel_TestLayout.setVerticalGroup(
-            jPanel_TestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TestLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_Start)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_TestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel_Error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane.addTab("Test", jPanel_Test);
 
         jButton1.setText("Abrir Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -598,6 +560,17 @@ public class Screen extends javax.swing.JFrame {
             }
         });
 
+        AreaOrganizacion.setColumns(20);
+        AreaOrganizacion.setRows(5);
+        jScrollPane1.setViewportView(AreaOrganizacion);
+
+        jButton5.setText("Limpiar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -605,21 +578,31 @@ public class Screen extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addContainerGap()
                         .addComponent(jLabel5))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
+                        .addGap(180, 180, 180)
                         .addComponent(jButton2)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addComponent(jLabel5)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Ordenamiento de Letras", jPanel2);
@@ -694,15 +677,17 @@ public class Screen extends javax.swing.JFrame {
         about();
     }//GEN-LAST:event_jMenuItem_AboutActionPerformed
 
-    private void jButton_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_StartActionPerformed
-        // TODO add your handling code here:
-        start();
-    }//GEN-LAST:event_jButton_StartActionPerformed
-
     private void jButton_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExitActionPerformed
         // TODO add your handling code here:
         exit();
     }//GEN-LAST:event_jButton_ExitActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        sw = new SortWords();
+        sw.selectTextFiles(AreaOrganizacion);
+        sw.openFileTXT();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -711,12 +696,9 @@ public class Screen extends javax.swing.JFrame {
         pdf.openFilePDF();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        sw = new SortWords();
-        sw.selectTextFiles();
-        sw.openFileTXT();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        AreaStemming.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
@@ -727,15 +709,14 @@ public class Screen extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         chooser.setMultiSelectionEnabled(true);
         int returnVal = chooser.showOpenDialog(null);
-        
+        AreaStemming.setText("Por favor espere...\n");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             File[] Files=chooser.getSelectedFiles();
-            System.out.println("Please wait...");
-                 for( int i=0;i<Files.length;i++){
-                     path = path + Files[i].toString();
-                  }
+            for( int i=0;i<Files.length;i++){
+                path = path + Files[i].toString();
+            }
             System.out.println(path);
-            try{ 
+            try{
                 Raiz raizNodo;
                 int i;
                 String cadena;
@@ -756,7 +737,7 @@ public class Screen extends javax.swing.JFrame {
                                 raizNodo.incrementar(raizNodo);
                             }
                         }
-                        
+
                     }
                 }
                 Collections.sort(raices, new Comparator<Raiz>(){
@@ -765,31 +746,36 @@ public class Screen extends javax.swing.JFrame {
                     public int compare(Raiz o1, Raiz o2) {
                         return Integer.compare(o2.getCant(), o1.getCant());
                     }
-                    
+
                 });
-                
+
                 imprimirArray();
                 b.close();
-             }catch(Exception e){e.printStackTrace();}
+            }catch(Exception e){e.printStackTrace();}
             System.out.println("Sort File Complete");
         }
-        
-// TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        AreaOrganizacion.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AreaOrganizacion;
+    private javax.swing.JTextArea AreaStemming;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton_Exit;
-    private javax.swing.JButton jButton_Start;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel_Error;
     private javax.swing.JLabel jLabel_Result;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItem_About;
@@ -799,12 +785,9 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel_Analizar;
-    private javax.swing.JPanel jPanel_Test;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane;
-    private javax.swing.JTable jTable;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
@@ -816,25 +799,7 @@ public class Screen extends javax.swing.JFrame {
         
     }
 
-    private void start() {
-        String[] array = es.test();
-        String root;
-        String[] line;
-        int error = 0;
-        int size = array.length;
-        for (int i = 0; i < size - 1; i++) {
-            line = array[i].split(" ");
-            if (line.length == 2) {
-                root = es.stemm(line[0]);
-                if (root.compareTo(line[1]) == 0) {
-                    model.addRow(new Object[]{i + 1, line[0], root});
-                } else {
-                    error++;
-                }
-            }
-        }
-        jLabel_Error.setText(String.valueOf(error));
-    }
+    
 
     
 
