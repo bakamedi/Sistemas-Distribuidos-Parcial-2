@@ -10,9 +10,13 @@
 package com.aqpsoftteam.porter;
 
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +32,27 @@ public class Screen extends javax.swing.JFrame {
     private PDFConverter pdf;
     private MyModel model;
     private Stemm_es es;
+    
+    private ArrayList<Raiz> raices = new ArrayList<Raiz>();
+    
+    public Raiz existeRaiz(String raiz){
+        int i; Raiz raizNodo;
+        for(i = 0; i < raices.size(); i++){
+            raizNodo = raices.get(i);
+            if(raizNodo.getPalabra().equals(raiz)){
+                return raizNodo;
+            }
+        }
+        return null;
+    }
+    
+    public void imprimirArray(){
+        int i; Raiz raizNodo;
+        for(i = 0; i < raices.size(); i++){
+            raizNodo = raices.get(i);
+            System.out.println(raizNodo);
+        }
+    }
 
     public Screen() {
         setTitle("Algoritmo de Porter");
@@ -383,6 +408,7 @@ public class Screen extends javax.swing.JFrame {
                   }
             System.out.println(path);
             try{ 
+                Raiz raizNodo;
                 int i;
                 String cadena;
                 FileReader f = new FileReader(path);
@@ -390,15 +416,30 @@ public class Screen extends javax.swing.JFrame {
                 while((cadena = b.readLine())!=null) {
                     String palabras[] = cadena.split(" ");
                     for(i = 0; i < palabras.length; i++){
-                        palabras[i] = palabras[i].replaceAll("\\{Punct}","");
-                        palabras[i] = palabras[i].replaceAll("\\{Digit}","");
+                        palabras[i] = palabras[i].replaceAll("\\p{Punct}","");
+                        palabras[i] = palabras[i].replaceAll("\\p{Digit}","");
                         palabras[i] = palabras[i].toLowerCase();
                         if(palabras[i] != ""){
-                            System.out.println(steam.stemm(palabras[i]));
+                            raizNodo = existeRaiz(palabras[i]);
+                            if(raizNodo == null){
+                                raices.add(new Raiz(palabras[i]));
+                            } else {
+                                raizNodo.incrementar(raizNodo);
+                            }
                         }
                         
                     }
                 }
+                Collections.sort(raices, new Comparator<Raiz>(){
+
+                    @Override
+                    public int compare(Raiz o1, Raiz o2) {
+                        return Integer.compare(o2.getCant(), o1.getCant());
+                    }
+                    
+                });
+                
+                imprimirArray();
                 b.close();
              }catch(Exception e){e.printStackTrace();}
             System.out.println("Sort File Complete");
